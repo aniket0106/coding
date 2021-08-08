@@ -38,3 +38,11 @@ def conversionOfArray (arr):
 arr=[4,3,7,8,6,2,1]
 print(conversionOfArray(arr))
 
+from math import factorial as fact
+def pattern (n):
+    for i in range (0,n):
+        for j in range(0,i+1):
+            data = fact(i)//(fact(i-j)*fact(j))
+            print(data,end=' ')
+        print()
+pattern(5)
