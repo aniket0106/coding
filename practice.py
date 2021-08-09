@@ -44,8 +44,23 @@ def pattern (n):
         for j in range(0,i+1):
             data = fact(i)//(fact(i-j)*fact(j))
             print(data,end=' ')
-        print(pattern(5)
+        print()
+    pattern(5)
 
+import math
+def triplet (arr):
+    n=len(arr)
+    s=set()
+    for i in arr:
+        s.add(i*i)
+    for i in range(n-1):
+        for j in range(i+1,n):
+            if ((arr[i]*arr[i]) +(arr[j]*arr[j])) in s:
+                print('triplet found is: ',arr[i],arr[j],int(math.sqrt((arr[i]*arr[i]) +(arr[j]*arr[j]))))
+                return
+    print('no triplet found')
+arr=[1,3,4,5]
+triplet(arr)
 
 class Node:
     def __init__(self,data):
@@ -88,19 +103,22 @@ def leftView (root,level):
 res=[]
 max_level=0
 leftView(root,1)
-print(res)=
-import math
-def triplet (arr):
-    n=len(arr)
-    s=set()
-    for i in arr:
-        s.add(i*i)
-    for i in range(n-1):
-        for j in range(i+1,n):
-            if ((arr[i]*arr[i]) +(arr[j]*arr[j])) in s:
-                print('triplet found is: ',arr[i],arr[j],int(math.sqrt((arr[i]*arr[i]) +(arr[j]*arr[j]))))
-                return
-    print('no triplet found')
-arr=[1,3,4,5]
-triplet(arr)
+print(res)
 
+def topView (root):
+    hd = 0
+    queue = []
+    hash = {}
+    queue.append((root,hd))
+    while queue != []:
+        root = queue.pop(0)
+        if root[1] not in hash:
+            hash[root[1]] = root[0].data
+        if root[0].left != None:
+            queue.append((root[0].left,root[1]-1))
+        if root[0].right != None:
+            hd=hd+1
+            queue.append((root[0].right,root[1]+1))
+
+    values = hash.values()
+    return values
