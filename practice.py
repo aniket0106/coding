@@ -46,3 +46,46 @@ def pattern (n):
             print(data,end=' ')
         print()
 pattern(5)
+
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.left=None
+        self.right=None
+def createTree(root):
+    queue=[]
+    data=int(input('enter the data: '))
+    node=Node(data)
+    queue.append(node)
+    if root == None:
+        root=node
+    while queue != []:
+        node=queue.pop(0)
+        data=int(input('enter the left child: '))
+        if data != -1:
+            node1=Node(data)
+            node.left=node1
+            queue.append(node1)
+        data=int(input('enter the right child: '))
+        if data != -1:
+            node1=Node(data)
+            node.right=node1
+            queue.append(node1)
+    return root
+root=createTree(None)
+print(root.data)
+
+
+def leftView (root,level):
+    global res,max_level
+    if root == None:
+        return 
+    if max_level < level:
+        max_level = level
+        res.append(root.data)
+    leftView(root.left,level+1)
+    leftView(root.right,level+1)
+res=[]
+max_level=0
+leftView(root,1)
+print(res)
