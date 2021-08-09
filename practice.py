@@ -46,3 +46,18 @@ def pattern (n):
             print(data,end=' ')
         print()
 pattern(5)
+
+import math
+def triplet (arr):
+    n=len(arr)
+    s=set()
+    for i in arr:
+        s.add(i*i)
+    for i in range(n-1):
+        for j in range(i+1,n):
+            if ((arr[i]*arr[i]) +(arr[j]*arr[j])) in s:
+                print('triplet found is: ',arr[i],arr[j],int(math.sqrt((arr[i]*arr[i]) +(arr[j]*arr[j]))))
+                return
+    print('no triplet found')
+arr=[1,3,4,5]
+triplet(arr)
